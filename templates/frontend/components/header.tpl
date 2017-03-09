@@ -59,7 +59,8 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-
+				</div>
+				<div class="navbar-header" style="position: absolute; top: 35px;">
 					{* Logo or site title. Only use <h1> heading on the homepage.
 					   Otherwise that should go to the page title. *}
 					{if $requestedOp == 'index'}
@@ -75,7 +76,7 @@
 							{/if}
 						{/capture}
 						{if $displayPageHeaderLogo && is_array($displayPageHeaderLogo)}
-							<a href="{$homeUrl}" class="navbar-brand navbar-brand-logo">
+							<a href="{$homeUrl}" class="navbar-brand navbar-brand-logo" style="height: 150px;">
 								<img src="{$publicFilesDir}/{$displayPageHeaderLogo.uploadName|escape:"url"}" {if $displayPageHeaderLogo.altText != ''}alt="{$displayPageHeaderLogo.altText|escape}"{else}alt="{translate key="common.pageHeaderLogo.altText"}"{/if}>
 							</a>
 						{elseif $displayPageHeaderTitle && !$displayPageHeaderLogo && is_string($displayPageHeaderTitle)}
@@ -103,7 +104,7 @@
 				{/capture}
 
 				{if !empty(trim($primaryMenu)) || !$noContextsConfigured}
-					<nav id="nav-menu" class="navbar-collapse collapse" aria-label="{translate|escape key="common.navigation.site"}">
+					<nav id="nav-menu" class="navbar-collapse collapse" aria-label="{translate|escape key="common.navigation.site"}" style="margin-left: 200px">
 						{* Primary navigation menu for current application *}
 						{$primaryMenu}
 
