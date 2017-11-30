@@ -27,6 +27,7 @@ class BootstrapThreeThemePlugin extends ThemePlugin {
 			'label' => 'plugins.themes.bootstrap3.options.bootstrapTheme.label',
 			'description' => 'plugins.themes.bootstrap3.options.bootstrapTheme.description',
 			'options' => array(
+				'boap_test'  => 'plugins.themes.bootstrap3.options.bootstrapTheme.boap_test',
 				'bootstrap3' => 'plugins.themes.bootstrap3.options.bootstrapTheme.bootstrap3',
 				'cerulean'   => 'plugins.themes.bootstrap3.options.bootstrapTheme.cerulean',
 				'cleanblog'  => 'plugins.themes.bootstrap3.options.bootstrapTheme.cleanblog',
