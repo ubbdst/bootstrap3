@@ -569,7 +569,7 @@ p {
 
 .breadcrumb {
   background-color: @white;
-  border-color: @gray;
+  border-color: @linecolor;
   border-style: solid;
   border-width: 0 0 1px 0;
   border-radius: 0px;
@@ -610,7 +610,7 @@ p {
 /*ARTICLE STUFF*/
 
 .page-header {
-  border-bottom: 1px solid @gray-plus;
+  border-bottom: 1px solid @linecolor;
 }
 
 .galleys{
@@ -625,8 +625,30 @@ p {
   border: none;
 }
 
+.btn-default, .pkp_block.block_make_submission a, .pkp_block.block_make_submission a {
+  border: none;
+  padding-top: 7px;
+}
+
+.btn-default:hover, .pkp_block.block_make_submission a:hover, .pkp_block.block_make_submission a:hover {
+  padding-top: 7px;
+  margin-top: 0;
+}
+
 .btn-default, .pkp_block.block_make_submission a{
   background-color: @gray-light;
+}
+
+.alert-info {
+  border: none;
+}
+
+.alert-info a{
+  color: @black;
+}
+
+.btn-primary, .article-details .galley-link:hover {
+  margin-top: 7px;
 }
 
 
