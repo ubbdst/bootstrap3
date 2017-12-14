@@ -27,7 +27,8 @@ class BootstrapThreeThemePlugin extends ThemePlugin {
 			'label' => 'plugins.themes.bootstrap3.options.bootstrapTheme.label',
 			'description' => 'plugins.themes.bootstrap3.options.bootstrapTheme.description',
 			'options' => array(
-				'boap_test'  => 'plugins.themes.bootstrap3.options.bootstrapTheme.boap_test',
+				'admin_boap'  => 'plugins.themes.bootstrap3.options.bootstrapTheme.admin_boap',
+				'boap_journal_theme'  => 'plugins.themes.bootstrap3.options.bootstrapTheme.boap_journal_theme',
 				'bootstrap3' => 'plugins.themes.bootstrap3.options.bootstrapTheme.bootstrap3',
 				'cerulean'   => 'plugins.themes.bootstrap3.options.bootstrapTheme.cerulean',
 				'cleanblog'  => 'plugins.themes.bootstrap3.options.bootstrapTheme.cleanblog',

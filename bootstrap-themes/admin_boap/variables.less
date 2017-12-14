@@ -1,4 +1,4 @@
-// BOAP TEST
+// BOAPTEST
 // Variables
 // --------------------------------------------------
 
@@ -7,41 +7,34 @@
 //
 //## Gray and brand colors for use across Bootstrap.
 
-@gray-base:              #2f3526;
+@gray-base:              #000;
 @gray-darker:            lighten(@gray-base, 13.5%); // #222
-@gray-dark:              #3e413a;   // #3e413a
-@gray:                   #50544a;
-@gray-light:             #9ea397;   // #9ea397
-@gray-lighter:           #d6dacf; // #d6dacf
+@gray-dark:              #474747;  
+@gray:                   #858585;
+@gray-light:             #b7b7b7;
+@gray-lighter:           #d5d5d5; 
 
-@brand-primary:         #375a7f;
-@brand-success:         #00bc8c;
-@brand-info:            #a7b2c8;
-@brand-warning:         #f4684d;
-@brand-danger:          #fb5858;
+@brand-primary:         #cf3c3a;
+@brand-success:         #0da6a3;
+@brand-info:            #3498DB;
+@brand-warning:         #dbbf48;
+@brand-danger:          #e55343;
 
-
-
-@dark: 		#1b1e17;
-@darkgrey:	#2a2d25;
-@red:		#9f3c3c;
-@orange:	#f5ae48;
-@white:		#cec3ad;
-@blue:		#aeb8ce;
-
-
+@uibWhite: 				#eae6e2;
+@uibRed:		        #cf3c3a;
+@uibBlue:				#00769e;
 
 //== Scaffolding
 //
 //## Settings for some of the most global styles.
 
 //** Background color for `<body>`.
-@body-bg:               @dark;
+@body-bg:               @uibWhite;
 //** Global text color on `<body>`.
-@text-color:            @white;
+@text-color:            #333333;
 
 //** Global textual link color.
-@link-color:           @blue;
+@link-color:            @uibBlue;
 //** Link hover color set via `darken()` function.
 @link-hover-color:      @link-color;
 //** Link hover decoration.
@@ -53,7 +46,7 @@
 //## Font, line-height, and color for body text, headings, and more.
 
 @font-family-sans-serif:  "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
-@font-family-serif:       "Palatino Linotype", Georgia, "Times New Roman", Times, serif;
+@font-family-serif:       Georgia, "Times New Roman", Times, serif;
 //** Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
 @font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace;
 @font-family-base:        @font-family-sans-serif;
@@ -369,7 +362,7 @@
 // Basics of a navbar
 @navbar-height:                    60px;
 @navbar-margin-bottom:             @line-height-computed;
-@navbar-border-radius:             @border-radius-base;
+@navbar-border-radius:             0;
 @navbar-padding-horizontal:        floor((@grid-gutter-width / 2));
 @navbar-padding-vertical:          ((@navbar-height - @line-height-computed) / 2);
 @navbar-collapse-max-height:       340px;
@@ -379,8 +372,8 @@
 @navbar-default-border:            transparent;
 
 // Navbar links
-@navbar-default-link-color:                @white;
-@navbar-default-link-hover-color:          @brand-success;
+@navbar-default-link-color:                @uibWhite;
+@navbar-default-link-hover-color:          @uibWhite;
 @navbar-default-link-hover-bg:             transparent;
 @navbar-default-link-active-color:         #fff;
 @navbar-default-link-active-bg:            darken(@navbar-default-bg, 10%);
