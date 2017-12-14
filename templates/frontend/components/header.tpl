@@ -41,7 +41,7 @@
 
 			{* User profile, login, etc, navigation menu*}
 			<div class="container-fluid">
-				<div class="row">
+				<div class="row navTop">
 					<ul id="navigationUser" class="nav nav-pills tab-list pull-right" role="navigation" aria-label="{translate|escape key="common.navigation.user"}">
 						{if $isUserLoggedIn}
 							<li>
@@ -98,7 +98,7 @@
 				</div><!-- .row -->
 			</div><!-- .container-fluid -->
 
-			<div class="container-fluid">
+			<div class="container-fluid top-menu">
 
 				<div class="navbar-header">
 
@@ -113,7 +113,7 @@
 					{* Logo or site title. Only use <h1> heading on the homepage.
 					   Otherwise that should go to the page title. *}
 					{if $requestedOp == 'index'}
-						<h1 class="site-name">
+						<h1 class="site-name"> 
 					{else}
 						<div class="site-name">
 					{/if}

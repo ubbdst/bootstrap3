@@ -1,4 +1,4 @@
-// BOAP TEST
+// BOAPTEST
 // Bootswatch
 // -----------------------------------------------------
 
@@ -13,12 +13,11 @@
 
 .navbar {
   border-width: 0;
-  background-color: @black;
 
   &-default {
 
     .badge {
-      background-color: @white;
+      background-color: #fff;
       color: @navbar-default-bg;
     }
   }
@@ -26,7 +25,7 @@
   &-inverse {
 
     .badge {
-      background-color: @white;
+      background-color: #fff;
       color: @navbar-inverse-bg;
     }
   }
@@ -37,18 +36,13 @@
 
   &-form {
     .form-control {
-      background-color: #12150d;
+      background-color: white;
 
       &:focus {
-        border-color: #12150d;
+        border-color: white;
       }
     }
   }
-}
-
-#main-navigation li{
-  text-transform: uppercase;
-  font-weight: 600;
 }
 
 // Buttons ====================================================================
@@ -66,12 +60,6 @@
 }
 
 // Typography =================================================================
-
-#main-content p{
-  font-family: @font-family-serif;
-  font-size: 18px;
-  line-height: 150%;
-}
 
 .text-primary,
 .text-primary:hover {
@@ -358,25 +346,90 @@ a.list-group-item {
   color: @text-color;
 }
 
+
+
+
+.row.navTop{
+  background-color: #383838;
+}
+
+.navbar-header{
+}
+
+.navbar-brand-logo{
+}
+
+.navbar-brand-logo img{
+}
+
+nav .navbar-nav{
+}
+
+
+
 .panel-default > .panel-heading {
-  background-color: #23291a;
+  background-color: @panel-footer-bg;
 }
 
 
-footer.footer{
-  background-color: @darkgrey;
+.panel-default > .panel-heading, .pkp_block .title{
+  background-color: #b7b7b7;
+  font-weight: 700;
+  border: 1px solid transparent;
+   border-radius: 0px;
+  -webkit-box-shadow: 0;
+  box-shadow: 0;
 }
 
-footer .container{
+#sidebar{
+  margin-top: 30px;
 }
 
-
-
-.panel > .list-group .list-group-item, .panel > .panel-collapse > .list-group .list-group-item, .pkp_block ul li{
-  border: 1px solid @dark;
+#sidebar .pkp_block,
+.list-group-item,
+.pkp_block ul li{
+  background-color: @uibWhite;
+  font-weight: 700;
+}
+.pkp_block ul li a{
+  color: @gray-dark;
 }
 
-.pkp_block{
-  border: 1px solid @dark;
-  background-color: @dark;
+.panel, .pkp_block {
+  margin-bottom: 20px;
+  background-color: @uibWhite;
+  border: 1px solid transparent;
+  border-radius: 0px;
+  -webkit-box-shadow: 0;
+  box-shadow: 0;
 }
+
+.navbar-nav > li{
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+footer[role="contentinfo"] {
+  height: 150px;
+  background: #dcd5cf;
+}
+
+footer[role="contentinfo"] element {
+  display: none;
+}
+
+.breadcrumb{
+  background-color: @uibWhite;
+}
+
+.breadcrumb a{
+  color: @gray;
+  text-decoration: underline;
+}
+
+.alert-info {
+  background-color: #00769e;
+  border-color: #00769e;
+  color: #fff;
+}
+

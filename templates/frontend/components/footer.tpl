@@ -31,18 +31,18 @@
 
       <div class="row">
     		{if $pageFooter}
-        <div class="col-md-8">
+        <div class="col-md-10">
           {$pageFooter}
         </div>
     		{/if}
 
-    		<div class="col-md-4" role="complementary" aria-label="{translate|escape key="about.aboutThisPublishingSystem"}">
+    		<div class="col-md-2" role="complementary" aria-label="{translate|escape key="about.aboutThisPublishingSystem"}">
     			<a href="{url page="about" op="aboutThisPublishingSystem"}">
-    				<img alt="{translate key=$packageKey}" src="{$baseUrl}/{$brandImage}">
+    				<img alt="{translate key=$packageKey}" src="{$baseUrl}/{$brandImage}" width="70px">
     			</a>
-    			<a href="{$pkpLink}">
+    			<!--<a href="{$pkpLink}">
     				<img alt="{translate key="common.publicKnowledgeProject"}" src="{$baseUrl}/lib/pkp/templates/images/pkp_brand.png">
-    			</a>
+    			</a>-->
     		</div>
 
       </div> <!-- .row -->
