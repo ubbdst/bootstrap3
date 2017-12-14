@@ -10,7 +10,7 @@
  *}
 {include file="frontend/components/header.tpl"}
 
-<div id="main-site" class="page_index_site">ddddddddd
+<div id="main-site" class="page_index_site">
 
 	{if $about}
 		<div class="about_site">
