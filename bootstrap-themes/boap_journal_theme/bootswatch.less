@@ -13,6 +13,14 @@
   border-width: 0 1px @width 1px;
 }
 
+h1 small, h2 small, h3 small, h4 small, h5 small, h6 small, .h1 small, .h2 small, .h3 small, .h4 small, .h5 small, .h6 small, h1 .small, h2 .small, h3 .small, h4 .small, h5 .small, h6 .small, .h1 .small, .h2 .small, .h3 .small, .h4 .small, .h5 .small, .h6 .small {
+  color: @gray;
+}
+
+p {
+  color: @black;
+}
+
 // Navbar =====================================================================
 
 .navbar  {
@@ -351,11 +359,23 @@ label {
   .box-shadow(none);
 }
 
+
 .breadcrumb {
-  border-color: darken(@breadcrumb-bg, 5%);
+  background-color: @white;
+  border-color: @linecolor;
   border-style: solid;
-  .shadow();
+  border-width: 0 0 1px 0;
+  border-radius: 0px;
+  font-weight: 700;
 }
+
+.breadcrumb .active {
+  color: @gray;
+}
+.breadcrumb li + li::before {
+  color: @gray-dark;
+}
+
 
 .pagination,
 .pager {
@@ -527,7 +547,13 @@ a.list-group-item {
 }
 
 
-/*************************************************************************************/
+/******************************* UB style  *********************************************************/
+
+.thumbnail {
+  border: none;
+}
+
+/* HEADER */
 
 #headerNavigationContainer .container-fluid{
   max-width: 1111px;
@@ -562,26 +588,7 @@ a.list-group-item {
 }
 
 
-p {
-  color: @black;
-}
 
-
-.breadcrumb {
-  background-color: @white;
-  border-color: @linecolor;
-  border-style: solid;
-  border-width: 0 0 1px 0;
-  border-radius: 0px;
-  font-weight: 700;
-}
-
-.breadcrumb .active {
-  color: @gray;
-}
-.breadcrumb li + li::before {
-  color: @gray-dark;
-}
 
 /* SIDEBAR */
 
@@ -608,43 +615,18 @@ p {
 
 
 /*ARTICLE STUFF*/
-
 .page-header {
   border-bottom: 1px solid @linecolor;
 }
 
-.galleys{
+.media {
+  margin-top: 0em;
+  margin-bottom: 0.25em;
 }
-
-.sections{
-}
-
 
 /*Buttons*/
 .btn-primary {
   border: none;
-}
-
-.btn-default, .pkp_block.block_make_submission a, .pkp_block.block_make_submission a {
-  border: none;
-  padding-top: 7px;
-}
-
-.btn-default:hover, .pkp_block.block_make_submission a:hover, .pkp_block.block_make_submission a:hover {
-  padding-top: 7px;
-  margin-top: 0;
-}
-
-.btn-default, .pkp_block.block_make_submission a{
-  background-color: @gray-light;
-}
-
-.alert-info {
-  border: none;
-}
-
-.alert-info a{
-  color: @black;
 }
 
 .btn-primary, .article-details .galley-link {
@@ -656,6 +638,27 @@ p {
   background-color: @gray-darker;
 }
 
+.btn-default, .pkp_block.block_make_submission a, .pkp_block.block_make_submission a {
+  border: none;
+  padding-top: 7px;
+  background-color: @gray-light;
+  border: none;
+}
+
+.btn-default:hover, .pkp_block.block_make_submission a:hover, .pkp_block.block_make_submission a:hover {
+  padding-top: 7px;
+  margin-top: 0;
+}
+
+.alert-info {
+  border: none;
+}
+
+.alert-info a{
+  color: @black;
+}
+
+
 /*FOOTER*/
 
 footer[role="contentinfo"] {
@@ -664,16 +667,4 @@ footer[role="contentinfo"] {
 
 footer[role="contentinfo"] p {
   color: @gray-plus;
-}
-
-h1 small, h2 small, h3 small, h4 small, h5 small, h6 small, .h1 small, .h2 small, .h3 small, .h4 small, .h5 small, .h6 small, h1 .small, h2 .small, h3 .small, h4 .small, h5 .small, h6 .small, .h1 .small, .h2 .small, .h3 .small, .h4 .small, .h5 .small, .h6 .small {
-  color: @gray;
-}
-
-.btn-default, .pkp_block.block_make_submission a {
-  border: none;
-}
-
-.thumbnail {
-  border: none;
 }
