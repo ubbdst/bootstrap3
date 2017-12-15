@@ -259,8 +259,14 @@ textarea {
   }
 }
 
-.breadcrumb a {
-  color: #fff;
+
+.breadcrumb{
+  background-color: @uibWhite;
+}
+
+.breadcrumb a{
+  color: @gray;
+  text-decoration: underline;
 }
 
 // Indicators =================================================================
@@ -347,33 +353,22 @@ a.list-group-item {
 }
 
 
-/*******************************BOAP CSS********************************/
-
-.row.navTop{
-}
-
-.navbar-header{
-}
-
-.navbar-brand-logo{
-  width: 250px;
-}
-
-.navbar-brand-logo img{
-  height: 80px;
-  max-height: 80px;
-  margin-top: -50px;
-}
-
-nav .navbar-nav{
-}
 
 
 
+
+
+
+
+
+/**************************************************************************
+*                                  UB CSS                                 *
+**************************************************************************/
+
+//HEADER ====================================================
 .panel-default > .panel-heading {
   background-color: @panel-footer-bg;
 }
-
 
 .panel-default > .panel-heading, .pkp_block .title{
   background-color: #b7b7b7;
@@ -385,7 +380,24 @@ nav .navbar-nav{
 }
 
 
-/* SIDEBAR */
+//NAVBAR ====================================================
+.navbar-brand-logo{
+  width: 250px;
+}
+
+.navbar-brand-logo img{
+  height: 80px;
+  max-height: 80px;
+  margin-top: -50px;
+}
+
+.navbar-nav > li{
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+
+//SIDEBAR ====================================================
 #sidebar{
   margin-top: 50px;
 }
@@ -396,6 +408,7 @@ nav .navbar-nav{
   background-color: @uibWhite;
   font-weight: 700;
 }
+
 .pkp_block ul li a{
   color: @gray-dark;
 }
@@ -409,17 +422,8 @@ nav .navbar-nav{
   box-shadow: 0;
 }
 
-.navbar-nav > li{
-  text-transform: uppercase;
-  font-weight: 700;
-}
 
-
-
-
-
-/*JOURNALS*/
-
+//JOURNALS ====================================================
 .media .nav-pills > li > a {
   background-color: @gray-dark;
 }
@@ -429,8 +433,15 @@ nav .navbar-nav{
 }
 
 
+//BUTTONS ====================================================
+.alert-info {
+  background-color: #00769e;
+  border-color: #00769e;
+  color: #fff;
+}
 
 
+//FOOTER ====================================================
 footer[role="contentinfo"] {
   height: 150px;
   background: #dcd5cf;
@@ -439,19 +450,3 @@ footer[role="contentinfo"] {
 footer[role="contentinfo"] element {
   display: none;
 }
-
-.breadcrumb{
-  background-color: @uibWhite;
-}
-
-.breadcrumb a{
-  color: @gray;
-  text-decoration: underline;
-}
-
-.alert-info {
-  background-color: #00769e;
-  border-color: #00769e;
-  color: #fff;
-}
-
