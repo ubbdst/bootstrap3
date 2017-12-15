@@ -443,10 +443,20 @@ a.list-group-item {
 
 //FOOTER ====================================================
 footer[role="contentinfo"] {
-  height: 150px;
+  height: 250px;
   background: #dcd5cf;
 }
 
 footer[role="contentinfo"] element {
   display: none;
+}
+
+footer[role="contentinfo"] td {
+  width:33%;
+  padding: 0 20px 0 20px;
+}
+
+footer[role="contentinfo"] td.center {
+  border-left: 1px solid @gray;
+  border-right: 1px solid @gray;
 }
