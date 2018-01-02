@@ -413,6 +413,11 @@ a.list-group-item {
   color: @gray-dark;
 }
 
+.panel, .pkp_block .title{
+  background-color: @uibRed;
+  color:@uibWhite;
+}
+
 .panel, .pkp_block {
   margin-bottom: 20px;
   background-color: @uibWhite;
@@ -430,6 +435,10 @@ a.list-group-item {
 
 .media .nav-pills li a:hover {
   background-color: @uibBlue;
+}
+
+h3.media-heading{
+  font-weight: bold;
 }
 
 
@@ -454,9 +463,25 @@ footer[role="contentinfo"] element {
 footer[role="contentinfo"] td {
   width:33%;
   padding: 0 20px 0 20px;
+  font-size: 16px;
+  line-height: 145%;
 }
 
 footer[role="contentinfo"] td.center {
-  border-left: 1px solid @gray;
-  border-right: 1px solid @gray;
+ /* border-left: 1px solid @gray;
+  border-right: 1px solid @gray;*/
 }
+
+footer h3{
+  font-size: 21px;
+  font-weight: bold;
+  color: @uibRed;
+}
+
+.footer-extra{
+  background-color: @uibRed;
+  padding: 10px 0 1px 0;
+  text-align: center;
+  color: @uibWhite;
+}
+

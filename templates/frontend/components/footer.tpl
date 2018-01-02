@@ -42,12 +42,15 @@
     			</a>-->
     			<!--<a href="{$pkpLink}">
     				<img alt="{translate key="common.publicKnowledgeProject"}" src="{$baseUrl}/lib/pkp/templates/images/pkp_brand.png">
-    			</a>-->
-    		</div>
+    			</a>
+    		</div>-->
 
       </div> <!-- .row -->
   	</div><!-- .container -->
   </footer>
+  <div class="footer-extra"> <!-- line on bottom of page for collaboration content and contact --> 
+    <p>Thin red line</p>
+  </div>
 </div><!-- pkp_structure_page -->
 
 {load_script context="frontend" scripts=$scripts}
