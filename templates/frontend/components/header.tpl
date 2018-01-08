@@ -82,7 +82,14 @@
 					{else}
 						</div>
 					{/if}
-					<ul id="navigationUser" class="nav nav-pills tab-list pull-right" role="navigation" aria-label="{translate|escape key="common.navigation.user"}">
+				</div>
+
+				{* Primary site navigation *}
+				<nav id="nav-menu" class="navbar-collapse collapse" aria-label="{translate|escape key="common.navigation.site"}">
+					{* Primary navigation menu for current application *}
+					{include file="frontend/components/primaryNavMenu.tpl"}
+
+<ul id="navigationUser" class="nav nav-pills tab-list pull-right" role="navigation" aria-label="{translate|escape key="common.navigation.user"}">
 						{if $isUserLoggedIn}
 							<li>
 								<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="{url router=$smarty.const.ROUTE_PAGE page="submissions"}">
@@ -135,12 +142,7 @@
 							<li><a href="{url router=$smarty.const.ROUTE_PAGE page="login"}">{translate key="navigation.login"}</a></li>
 						{/if}
 					</ul>
-				</div>
 
-				{* Primary site navigation *}
-				<nav id="nav-menu" class="navbar-collapse collapse" aria-label="{translate|escape key="common.navigation.site"}">
-					{* Primary navigation menu for current application *}
-					{include file="frontend/components/primaryNavMenu.tpl"}
 
 					{* Search form *}
 					{if !$noContextsConfigured}
