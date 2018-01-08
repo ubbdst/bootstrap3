@@ -20,15 +20,17 @@
  *}
 {include file="frontend/components/header.tpl" pageTitleTranslated=$currentJournal->getLocalizedName()}
 
-<div id="main-content" class="page_index_journal" role="content">
-
-	{call_hook name="Templates::Index::journal"}
 
 	{if $homepageImage}
 		<div class="homepage-image">
 			<img class="img-responsive" src="{$publicFilesDir}/{$homepageImage.uploadName|escape:"url"}" alt="{$homepageImageAltText|escape}">
 		</div>
 	{/if}
+<div id="main-content" class="page_index_journal" role="content">
+
+	{call_hook name="Templates::Index::journal"}
+
+
 
 	{if $journalDescription}
 		<div class="journal-description">
