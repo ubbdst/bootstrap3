@@ -183,27 +183,28 @@
 						{translate key="submission.howToCite"}
 					</div>
 					<div class="panel-body">
-				     		<div id="citationOutput" role="region" aria-live="polite">
+			     		<div id="citationOutput" role="region" aria-live="polite">
 							{$citation}
 						</div>
-					<div class="btn-group">
-						<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-controls="cslCitationFormats">
-							{translate key="submission.howToCite.citationFormats"}
-							<span class="caret"></span>
-						</button>
-						<ul class="dropdown-menu" role="menu">
-							{foreach from=$citationPlugins name="citationPlugins" item="citationPlugin"}
-						    		{capture assign="citationUrl"}{url page="article" op="cite" path=$article->getBestArticleId()}/{$citationPlugin->getName()|escape}{/capture}
-								<li>
-									<a href="{$citationUrl}"{if !$citationPlugin->isDownloadable()} data-load-citation="true"{/if} target="_blank">
-										{$citationPlugin->getCitationFormatName()|escape}
-									</a>
-								</li>
-							{/foreach}
-						</ul>
+						<div class="btn-group">
+							<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-controls="cslCitationFormats">
+								{translate key="submission.howToCite.citationFormats"}
+								<span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu" role="menu">
+								{foreach from=$citationPlugins name="citationPlugins" item="citationPlugin"}
+									{capture assign="citationUrl"}{url page="article" op="cite" path=$article->getBestArticleId()}/{$citationPlugin->getName()|escape}{/capture}
+									<li>
+										<a href="{$citationUrl}"{if !$citationPlugin->isDownloadable()} data-load-citation="true"{/if} target="_blank">
+											{$citationPlugin->getCitationFormatName()|escape}
+										</a>
+									</li>
+								{/foreach}
+							</ul>
+						</div>
 					</div>
 				</div>
-			        {/if}
+		        {/if}
 
 				{* PubIds (requires plugins) *}
 				{foreach from=$pubIdPlugins item=pubIdPlugin}
