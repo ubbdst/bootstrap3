@@ -2,7 +2,7 @@
 <!DOCTYPE locale SYSTEM "../../../../../lib/pkp/dtd/locale.dtd">
 
 <!--
-  * plugins/themes/bootstrap3/locale/en_US/locale.xml
+  * plugins/themes/bootstrap3/locale/id_ID/locale.xml
   *
   * Copyright (c) 2014-2017 Simon Fraser University Library
   * Copyright (c) 2003-2017 John Willinsky
@@ -11,19 +11,19 @@
   * Localization strings
   -->
 
-<locale name="en_US" full_name="U.S. English">
-	<message key="plugins.themes.bootstrap3.name">Bootstrap 3 Base Theme</message>
-	<message key="plugins.themes.bootstrap3.description">A starter Bootstrap 3 theme for the reader frontend.</message>
-	<message key="plugins.themes.bootstrap3.accessible_menu.label">Quick jump to page content</message>
-	<message key="plugins.themes.bootstrap3.accessible_menu.main_navigation">Main Navigation</message>
-	<message key="plugins.themes.bootstrap3.accessible_menu.main_content">Main Content</message>
-	<message key="plugins.themes.bootstrap3.accessible_menu.sidebar">Sidebar</message>
-	<message key="plugins.themes.bootstrap3.article.sidebar">Article Sidebar</message>
-	<message key="plugins.themes.bootstrap3.article.main">Main Article Content</message>
-	<message key="plugins.themes.bootstrap3.article.details">Article Details</message>
-	<message key="plugins.themes.bootstrap3.options.bootstrapTheme.label">Bootstrap Theme</message>
-	<message key="plugins.themes.bootstrap3.options.bootstrapTheme.description">Select one of these open-source Bootstrap themes which change the colors and typography of your website.</message>
-	<message key="plugins.themes.bootstrap3.options.bootstrapTheme.bootstrap3">Default Bootstrap Theme</message>
+<locale name="id_ID" full_name="Bahasa Indonesia">
+	<message key="plugins.themes.bootstrap3.name">Tema Dasar Bootstrap 3</message>
+	<message key="plugins.themes.bootstrap3.description">Tema awal Bootstrap 3 untuk antarmuka pembaca.</message>
+	<message key="plugins.themes.bootstrap3.accessible_menu.label">Lompat ke isi halaman</message>
+	<message key="plugins.themes.bootstrap3.accessible_menu.main_navigation">Navigasi Utama</message>
+	<message key="plugins.themes.bootstrap3.accessible_menu.main_content">Isi Utama</message>
+	<message key="plugins.themes.bootstrap3.accessible_menu.sidebar">Bilah Samping</message>
+	<message key="plugins.themes.bootstrap3.article.sidebar">Bilah Samping Artikel</message>
+	<message key="plugins.themes.bootstrap3.article.main">Isi Artikel Utama</message>
+	<message key="plugins.themes.bootstrap3.article.details">Rincian Artikel</message>
+	<message key="plugins.themes.bootstrap3.options.bootstrapTheme.label">Tema Bootstrap</message>
+	<message key="plugins.themes.bootstrap3.options.bootstrapTheme.description">Pilih satu dari beberapa tema Bootstrap berikut yang akan mengubah warna dan tipografi situs Anda.</message>
+	<message key="plugins.themes.bootstrap3.options.bootstrapTheme.bootstrap3">Tema Bootstrap Default</message>
 	<message key="plugins.themes.bootstrap3.options.bootstrapTheme.cerulean">Cerulean</message>
 	<message key="plugins.themes.bootstrap3.options.bootstrapTheme.cleanblog">Clean Blog</message>
 	<message key="plugins.themes.bootstrap3.options.bootstrapTheme.cosmo">Cosmo</message>

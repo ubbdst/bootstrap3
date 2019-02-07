@@ -1,8 +1,8 @@
 {**
  * templates/frontend/objects/article_details.tpl
  *
- * Copyright (c) 2014-2016 Simon Fraser University Library
- * Copyright (c) 2003-2016 John Willinsky
+ * Copyright (c) 2014-2017 Simon Fraser University Library
+ * Copyright (c) 2003-2017 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * @brief View of an Article which displays all details about the article.
@@ -48,11 +48,18 @@
 			{/if}
 
 			{* Article Galleys *}
-			{if $article->getGalleys()}
+			{if $primaryGalleys || $supplementaryGalleys}
 				<div class="download">
-					{foreach from=$article->getGalleys() item=galley}
-						{include file="frontend/objects/galley_link.tpl" parent=$article}
-					{/foreach}
+					{if $primaryGalleys}
+						{foreach from=$primaryGalleys item=galley}
+							{include file="frontend/objects/galley_link.tpl" parent=$article purchaseFee=$currentJournal->getSetting('purchaseArticleFee') purchaseCurrency=$currentJournal->getSetting('currency')}
+						{/foreach}
+					{/if}
+					{if $supplementaryGalleys}
+						{foreach from=$supplementaryGalleys item=galley}
+							{include file="frontend/objects/galley_link.tpl" parent=$article isSupplementary="1"}
+						{/foreach}
+					{/if}
 				</div>
 			{/if}
 
@@ -136,20 +143,22 @@
 				{if $article->getAuthors()}
 					<div class="authors">
 						{foreach from=$article->getAuthors() item=author}
-							<strong>{$author->getFullName()|escape}</strong>
-							{if $author->getLocalizedAffiliation()}
-								<div class="article-author-affilitation">
-									{$author->getLocalizedAffiliation()|escape}
-								</div>
-							{/if}
-							{if $author->getOrcid()}
-								<span class="orcid">
-									<a href="{$author->getOrcid()|escape}" target="_blank">
-										<img src="//orcid.org/sites/default/files/images/orcid_16x16.png">
-										{$author->getOrcid()|escape}
-									</a>
-								</span>
-							{/if}
+							<div class="author">
+								<strong>{$author->getFullName()|escape}</strong>
+								{if $author->getLocalizedAffiliation()}
+									<div class="article-author-affilitation">
+										{$author->getLocalizedAffiliation()|escape}
+									</div>
+								{/if}
+								{if $author->getOrcid()}
+									<div class="orcid">
+										{$orcidIcon}
+										<a href="{$author->getOrcid()|escape}" target="_blank">
+											{$author->getOrcid()|escape}
+										</a>
+									</div>
+								{/if}
+							</div>
 						{/foreach}
 					</div>
 				{/if}
@@ -172,38 +181,38 @@
 			</section><!-- .article-main -->
 
 			<section class="article-more-details">
-
-				{* Screen-reader heading for easier navigation jumps *}
-				<h2 class="sr-only">{translate key="plugins.themes.bootstrap3.article.details"}</h2>
-
-				{* Citation formats *}
-				{if $citationPlugins|@count}
-				<div class="panel panel-default how-to-cite">
-					<div class="panel-heading">
-						{translate key="submission.howToCite"}
-					</div>
-					<div class="panel-body">
-			     		<div id="citationOutput" role="region" aria-live="polite">
-							{$citation}
+				{* How to cite *}
+				{if $citation}
+					<div class="panel panel-default how-to-cite">
+						<div class="panel-heading">
+							{translate key="submission.howToCite"}
 						</div>
-						<div class="btn-group">
-							<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-controls="cslCitationFormats">
-								{translate key="submission.howToCite.citationFormats"}
-								<span class="caret"></span>
-							</button>
-							<ul class="dropdown-menu" role="menu">
-								{foreach from=$citationPlugins name="citationPlugins" item="citationPlugin"}
-									{capture assign="citationUrl"}{url page="article" op="cite" path=$article->getBestArticleId()}/{$citationPlugin->getName()|escape}{/capture}
-									<li>
-										<a href="{$citationUrl}"{if !$citationPlugin->isDownloadable()} data-load-citation="true"{/if} target="_blank">
-											{$citationPlugin->getCitationFormatName()|escape}
-										</a>
-									</li>
-								{/foreach}
-							</ul>
+						<div class="panel-body">
+							<div id="citationOutput" role="region" aria-live="polite">
+								{$citation}
+							</div>
+							<div class="btn-group">
+							  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-controls="cslCitationFormats">
+							    {translate key="submission.howToCite.citationFormats"}
+									<span class="caret"></span>
+							  </button>
+							  <ul class="dropdown-menu" role="menu">
+									{foreach from=$citationStyles item="citationStyle"}
+										<li>
+											<a
+												aria-controls="citationOutput"
+												href="{url page="citationstylelanguage" op="get" path=$citationStyle.id params=$citationArgs}"
+												data-load-citation
+												data-json-href="{url page="citationstylelanguage" op="get" path=$citationStyle.id params=$citationArgsJson}"
+											>
+												{$citationStyle.title|escape}
+											</a>
+										</li>
+									{/foreach}
+							  </ul>
+							</div>
 						</div>
 					</div>
-				</div>
 		        {/if}
 
 				{* PubIds (requires plugins) *}
@@ -292,7 +301,56 @@
 					</div>
 				{/if}
 
+				{* Author biographies *}
+				{assign var="hasBiographies" value=0}
+				{foreach from=$article->getAuthors() item=author}
+					{if $author->getLocalizedBiography()}
+						{assign var="hasBiographies" value=$hasBiographies+1}
+					{/if}
+				{/foreach}
+				{if $hasBiographies}
+					<div class="panel panel-default author-bios">
+						<div class="panel-heading">
+							{if $hasBiographies > 1}
+								{translate key="submission.authorBiographies"}
+							{else}
+								{translate key="submission.authorBiography"}
+							{/if}
+						</div>
+						<div class="panel-body">
+							{foreach from=$article->getAuthors() item=author}
+								{if $author->getLocalizedBiography()}
+									<div class="media biography">
+										<div class="media-body">
+											<h3 class="media-heading biography-author">
+												{if $author->getLocalizedAffiliation()}
+													{capture assign="authorName"}{$author->getFullName()|escape}{/capture}
+													{capture assign="authorAffiliation"}<span class="affiliation">{$author->getLocalizedAffiliation()|escape}</span>{/capture}
+													{translate key="submission.authorWithAffiliation" name=$authorName affiliation=$authorAffiliation}
+												{else}
+													{$author->getFullName()|escape}
+												{/if}
+											</h3>
+											{$author->getLocalizedBiography()|strip_unsafe_html}
+										</div>
+									</div>
+								{/if}
+							{/foreach}
+						</div>
+					</div>
+				{/if}
+
 				{call_hook name="Templates::Article::Details"}
+
+				{* References *}
+				{if $article->getCitations()}
+					<div class="article-references">
+						<h2>{translate key="submission.citations"}</h2>
+						<div class="article-references-content">
+							{$article->getCitations()|nl2br}
+						</div>
+					</div>
+				{/if}
 
 			</section><!-- .article-details -->
 		</div><!-- .col-md-8 -->

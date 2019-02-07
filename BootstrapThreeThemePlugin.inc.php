@@ -3,8 +3,8 @@
 /**
  * @file plugins/themes/default/BootstrapThreeThemePlugin.inc.php
  *
- * Copyright (c) 2014-2016 Simon Fraser University Library
- * Copyright (c) 2003-2016 John Willinsky
+ * Copyright (c) 2014-2017 Simon Fraser University Library
+ * Copyright (c) 2003-2017 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * @class BootstrapThreeThemePlugin
@@ -48,11 +48,20 @@ class BootstrapThreeThemePlugin extends ThemePlugin {
 			)
 		));
 
-		$this->addStyle('bootstrap', 'styles/bootstrap.less');
-
 		$bootstrapTheme = $this->getOption('bootstrapTheme');
-		if (!empty($bootstrapTheme)) {
+		if (empty($bootstrapTheme) || $bootstrapTheme === 'bootstrap3') {
+			$this->addStyle('bootstrap', 'styles/bootstrap.less');
+		} else {
 			$this->addStyle('bootstrapTheme-' . $bootstrapTheme, 'styles/' . $bootstrapTheme . '.less');
+		}
+
+		$locale = AppLocale::getLocale();
+		if (AppLocale::getLocaleDirection($locale) === 'rtl') {
+			if (Config::getVar('general', 'enable_cdn')) {
+				$this->addStyle('bootstrap-rtl', '//cdn.rawgit.com/morteza/bootstrap-rtl/v3.3.4/dist/css/bootstrap-rtl.min.css', array('baseUrl' => ''));
+			} else {
+				$this->addStyle('bootstrap-rtl', 'styles/bootstrap-rtl.min.css');
+			}
 		}
 
 		// Load jQuery from a CDN or, if CDNs are disabled, from a local copy.
@@ -74,6 +83,9 @@ class BootstrapThreeThemePlugin extends ThemePlugin {
 
 		// Load Bootstrap
 		$this->addScript('bootstrap', 'bootstrap/js/bootstrap.min.js');
+
+		// Add navigation menu areas for this theme
+		$this->addMenuArea(array('primary', 'user'));
 	}
 
 	/**

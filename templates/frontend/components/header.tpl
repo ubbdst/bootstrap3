@@ -1,8 +1,8 @@
 {**
  * lib/pkp/templates/frontend/components/header.tpl
  *
- * Copyright (c) 2014-2016 Simon Fraser University Library
- * Copyright (c) 2003-2016 John Willinsky
+ * Copyright (c) 2014-2017 Simon Fraser University Library
+ * Copyright (c) 2003-2017 John Willinsky
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
  * @brief Common frontend site header.
@@ -20,15 +20,15 @@
 
 <!DOCTYPE html>
 <html lang="{$currentLocale|replace:"_":"-"}" xml:lang="{$currentLocale|replace:"_":"-"}">
-{if !$pageTitleTranslated}{translate|assign:"pageTitleTranslated" key=$pageTitle}{/if}
+{if !$pageTitleTranslated}{capture assign="pageTitleTranslated"}{translate key=$pageTitle}{/capture}{/if}
 {include file="core:frontend/components/headerHead.tpl"}
 <body class="pkp_page_{$requestedPage|escape|default:"index"} pkp_op_{$requestedOp|escape|default:"index"}{if $showingLogo} has_site_logo{/if}">
 	<div class="pkp_structure_page">
 
 		<nav id="accessibility-nav" class="sr-only" role="navigation" aria-labelled-by="accessible-menu-label">
-			<h2 id="accessible-menu-label">
+			<div id="accessible-menu-label">
 				{translate|escape key="plugins.themes.bootstrap3.accessible_menu.label"}
-			</h2>
+			</div>
 			<ul>
 			  <li><a href="#main-navigation">{translate|escape key="plugins.themes.bootstrap3.accessible_menu.main_navigation"}</a></li>
 			  <li><a href="#main-content">{translate|escape key="plugins.themes.bootstrap3.accessible_menu.main_content"}</a></li>
@@ -42,59 +42,9 @@
 			{* User profile, login, etc, navigation menu*}
 			<div class="container-fluid">
 				<div class="row">
-					<ul id="navigationUser" class="nav nav-pills tab-list pull-right" role="navigation" aria-label="{translate|escape key="common.navigation.user"}">
-						{if $isUserLoggedIn}
-							<li>
-								<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="{url router=$smarty.const.ROUTE_PAGE page="submissions"}">
-									{$loggedInUsername|escape}
-									<span class="badge">
-										{$unreadNotificationCount}
-									</span>
-								</a>
-								<ul class="dropdown-menu dropdown-menu-right">
-									{if array_intersect(array(ROLE_ID_MANAGER, ROLE_ID_ASSISTANT, ROLE_ID_REVIEWER, ROLE_ID_AUTHOR), $userRoles)}
-										<li>
-											<a href="{url router=$smarty.const.ROUTE_PAGE page="submissions"}">
-												{translate key="navigation.dashboard"}
-												<span class="badge">
-													{$unreadNotificationCount}
-												</span>
-											</a>
-										</li>
-									{/if}
-									<li>
-										<a href="{url router=$smarty.const.ROUTE_PAGE page="user" op="profile"}">
-											{translate key="common.viewProfile"}
-										</a>
-									</li>
-									{if array_intersect(array(ROLE_ID_SITE_ADMIN), $userRoles)}
-									<li>
-										<a href="{if $multipleContexts}{url router=$smarty.const.ROUTE_PAGE context="index" page="admin" op="index"}{else}{url router=$smarty.const.ROUTE_PAGE page="admin" op="index"}{/if}">
-											{translate key="navigation.admin"}
-										</a>
-									</li>
-									{/if}
-									<li>
-										<a href="{url router=$smarty.const.ROUTE_PAGE page="login" op="signOut"}">
-											{translate key="user.logOut"}
-										</a>
-									</li>
-									{if $isUserLoggedInAs}
-										<li>
-											<a href="{url router=$smarty.const.ROUTE_PAGE page="login" op="signOutAsUser"}">
-												{translate key="user.logOutAs"} {$loggedInUsername|escape}
-											</a>
-										</li>
-									{/if}
-								</ul>
-							</li>
-						{else}
-							{if !$hideRegisterLink}
-								<li><a href="{url router=$smarty.const.ROUTE_PAGE page="user" op="register"}">{translate key="navigation.register"}</a></li>
-							{/if}
-							<li><a href="{url router=$smarty.const.ROUTE_PAGE page="login"}">{translate key="navigation.login"}</a></li>
-						{/if}
-					</ul>
+					<nav aria-label="{translate|escape key="common.navigation.user"}">
+						{load_menu name="user" id="navigationUser" ulClass="nav nav-pills tab-list pull-right"}
+					</nav>
 				</div><!-- .row -->
 			</div><!-- .container-fluid -->
 
@@ -110,7 +60,7 @@
 						<span class="icon-bar"></span>
 					</button>
 				</div>
-				<div class="navbar-header" style="position: absolute; top: -20px">
+				<div class="navbar-header" style="position: absolute; top: 0px;">
 					{* Logo or site title. Only use <h1> heading on the homepage.
 					   Otherwise that should go to the page title. *}
 					{if $requestedOp == 'index'}
@@ -118,13 +68,15 @@
 					{else}
 						<div class="site-name">
 					{/if}
-						{if $currentJournal && $multipleContexts}
-							{url|assign:"homeUrl" journal="index" router=$smarty.const.ROUTE_PAGE}
-						{else}
-							{url|assign:"homeUrl" page="index" router=$smarty.const.ROUTE_PAGE}
-						{/if}
+						{capture assign="homeUrl"}
+							{if $currentJournal && $multipleContexts}
+								{url page="index" router=$smarty.const.ROUTE_PAGE}
+							{else}
+								{url context="index" router=$smarty.const.ROUTE_PAGE}
+							{/if}
+						{/capture}
 						{if $displayPageHeaderLogo && is_array($displayPageHeaderLogo)}
-							<a href="{$homeUrl}" class="navbar-brand navbar-brand-logo" style="height: 150px">
+							<a href="{$homeUrl}" class="navbar-brand navbar-brand-logo" style="height: 150px; padding-top: 0px">
 								<img src="{$publicFilesDir}/{$displayPageHeaderLogo.uploadName|escape:"url"}" {if $displayPageHeaderLogo.altText != ''}alt="{$displayPageHeaderLogo.altText|escape}"{else}alt="{translate key="common.pageHeaderLogo.altText"}"{/if}>
 							</a>
 						{elseif $displayPageHeaderTitle && !$displayPageHeaderLogo && is_string($displayPageHeaderTitle)}
@@ -147,17 +99,23 @@
 				</div>
 
 				{* Primary site navigation *}
-				<nav id="nav-menu" class="navbar-collapse collapse" aria-label="{translate|escape key="common.navigation.site"}" style="padding-left: 210px">
-					{* Primary navigation menu for current application *}
-					{include file="frontend/components/primaryNavMenu.tpl"}
+				{capture assign="primaryMenu"}
+					{load_menu name="primary" id="main-navigation" ulClass="nav navbar-nav"}
+				{/capture}
 
-					{* Search form *}
-					{if !$noContextsConfigured}
-						<div class="pull-md-right">
-							{include file="frontend/components/searchForm_simple.tpl"}
-						</div>
-					{/if}
-				</nav>
+				{if !empty(trim($primaryMenu)) || !$noContextsConfigured}
+					<nav id="nav-menu" class="navbar-collapse collapse" aria-label="{translate|escape key="common.navigation.site"}" style="margin-left: 200px">
+						{* Primary navigation menu for current application *}
+						{$primaryMenu}
+
+						{* Search form *}
+						{if !$noContextsConfigured}
+							<div class="pull-md-right">
+								{include file="frontend/components/searchForm_simple.tpl"}
+							</div>
+						{/if}
+					</nav>
+				{/if}
 
 			</div><!-- .pkp_head_wrapper -->
 		</header><!-- .pkp_structure_head -->

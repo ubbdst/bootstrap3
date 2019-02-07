@@ -15,6 +15,12 @@ You can now see the Bootstrap 3 theme on your website. Go back to the Settings >
 
 Some versions of the Bootstrap3 theme are only compatible with certain releases of OJS. This release list indicates which versions are compatible.
 
+* **Bootstrap3 v1.1.4** is compatible with OJS 3.1.1-1, 3.1.1-2.
+* **Bootstrap3 v1.1.3** is compatible with OJS 3.1.1-1.
+* **Bootstrap3 v1.1.2** is compatible with OJS 3.1.1.
+* **Bootstrap3 v1.1.1** is compatible with OJS 3.1.1.
+* **Bootstrap3 v1.1** is compatible with OJS 3.1.
+* **Bootstrap3 v1.0.2** is compatible with OJS 3.0.2.
 * **Bootstrap3 v1.0.1** is compatible with OJS 3.0.1.
 * **Bootstrap3 v1.0.0** is compatible with OJS 3.0.0.
 
@@ -42,8 +48,50 @@ Thanks to everyone who has contributed to this theme:
 - Ramón Martins Sodoma da Fonseca (IBCIT, Brazil)
 - Alexander Kiselev, @Avernial
 - Nikos Kasioumis, @kasioumis
+- Karam Qubsi, @karamqubsi
+- Simon Mitternacht, @mittinatten
+- Marco Tullney, @mtub
+- Dennis Müller, @dennmuel ([UB Mannheim](https://www.bib.uni-mannheim.de/))
 
 ## Changelog
+
+**1.1.4** (2018-06-12)
+* Fix: Escape user input in search template
+
+**1.1.3** (2018-06-04)
+* Fix: Missing privacy consent statements in registration form
+
+**1.1.2** (2018-04-23)
+* Fix: Fatal error on Editorial Team page
+
+**1.1.1** (2018-04-10)
+* Fix #68: Visual separation of multiple authors without affiliation/orcid
+* Fix #72: HTML article galley display
+* Fix: Use correct home URL in multi-journal installations
+* Add: Pagination template in Bootstrap style #30
+* Add: Article subtitles appear in issue table of contents
+* Add: Indicate required registration form fields
+* Update: Remote galleys displayed as primary galleys
+* Update: Translations for da_DK, id_ID
+
+**1.1** (2017-10-24)
+* Fix: Don't try to load additional stylesheet for base theme
+* Add: Custom navigation menu support
+* Add: Subscription support
+* Add: Author biographies on article details page
+* Add: German and Serbian translations
+* Add: RTL support (h/t Karam Qubsi)
+* Update: New OJS/PKP logo in footer
+* Update: Support new how-to-cite format
+* Update: Split display of primary and supplementary galleys
+* Update: Use SVG ORCID icon
+
+**1.0.2** (2017-02-07)
+* Fix: PDF view header styles
+* Fix: Issue cover and description switch to column layout
+* Update: Use new localised cover images methods for issue and article cover images
+* Add: Show references on article details page
+* Add: Add support for recaptcha on registration
 
 **1.0.1** (2016-11-29)
 * Fix: add missing Contact link to primary nav menu (h/t @Avernial)
